@@ -230,3 +230,140 @@ export const TempIcon: React.FC<IconSvgProps> = (props) => {
 	</svg>
 	);
 };
+
+
+export const ElectricMeterIcon: React.FC<IconSvgProps> = (props) => {
+	const { width, height = 40 } = props;
+
+	return (
+		<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		height={height }
+		viewBox="0 -960 960 960" 
+		width={width} 
+		fill="#5f6368"
+		{...props}
+	>
+    <path d="M360-82v-100q-106-37-173-129.5T120-522q0-75 28.5-140.5t77-114q48.5-48.5 114-77T479-882q74 0 140 28.5t115 77q49 48.5 77.5 114T840-522q0 118-67.5 209.5T600-183v101h-80v-82q-10 2-20 2h-21q-10 0-19.5-.5T440-164v82h-80Zm120-158q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82ZM320-600h320v-80H320v80Zm130 320 120-120-50-50 50-50-60-60-120 120 50 50-50 50 60 60Zm30-240Z"/>
+	</svg>
+	);
+};
+
+export const BatteryIcon: React.FC<IconSvgProps> = (props) => {
+	const { width, height = 40 } = props;
+
+	return (
+		<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		height={height }
+		viewBox="0 -960 960 960" 
+		width={width} 
+		fill="#5f6368"
+		{...props}
+	>
+    <path d="M320-80q-17 0-28.5-11.5T280-120v-640q0-17 11.5-28.5T320-800h80v-80h160v80h80q17 0 28.5 11.5T680-760v640q0 17-11.5 28.5T640-80H320Zm40-480h240v-160H360v160Z"/>
+  </svg>
+	);
+};
+
+export const PowerIcon: React.FC<IconSvgProps> = (props) => {
+	const { width, height = 40 } = props;
+
+	return (
+		<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		height={height }
+		viewBox="0 -960 960 960" 
+		width={width} 
+		fill="#5f6368"
+		{...props}
+	>
+    <path d="M460-200h40v-74l140-140v-186H320v186l140 140v74Zm-80 80v-120L240-380v-220q0-33 23.5-56.5T320-680h40l-40 40v-200h80v160h160v-160h80v200l-40-40h40q33 0 56.5 23.5T720-600v220L580-240v120H380Zm100-280Z"/>
+  </svg>
+	);
+};
+
+export const PowerOffIcon: React.FC<IconSvgProps> = (props) => {
+	const { width, height = 40 } = props;
+
+	return (
+		<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		height={height }
+		viewBox="0 -960 960 960" 
+		width={width} 
+		fill="#5f6368"
+		{...props}
+	>
+  <path d="M380-120v-120L240-380v-220q0-24 11-45t32-32l77 77h-40v186l140 140v74h40v-74l37-37L56-792l56-56 736 736-56 56-198-198-14 14v120H380Zm306-268-46-46v-166H474L320-754v-86h80v160h160v-160h80v200l-40-40h40q33 0 56.5 23.5T720-600v178l-34 34ZM558-516Zm-130 97Z"/>
+   </svg>
+	);
+};
+
+export const ElectricIcon: React.FC<IconSvgProps> = (props) => {
+	const { width, height = 40 } = props;
+
+	return (
+		<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		height={height }
+		viewBox="0 -960 960 960" 
+		width={width} 
+		fill="#5f6368"
+		{...props}
+	>
+    <path d="m280-80 160-300-320-40 480-460h80L520-580l320 40L360-80h-80Zm222-247 161-154-269-34 63-117-160 154 268 33-63 118Zm-22-153Z"/>
+   </svg>
+	);
+};
+
+export const FlowIcon: React.FC<IconSvgProps> = (props) => {
+	const { width, height = 40 } = props;
+
+	return (
+		<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		height={height }
+		viewBox="0 -960 960 960" 
+		width={width} 
+		fill="#5f6368"
+		{...props}
+	>
+    <path d="M750-614q-27 27-62 41t-70 14q-35 0-69-13.5T488-614l-75-75q-15-15-34-22.5t-39-7.5q-20 0-39 7.5T267-689l-75 75-57-57 75-75q27-27 61-40.5t69-13.5q35 0 68.5 13.5T469-746l75 75q16 16 35 23.5t39 7.5q20 0 39.5-7.5T693-671l75-75 57 57-75 75Zm0 200q-27 27-61.5 40.5T619-360q-35 0-69.5-13.5T488-414l-75-75q-15-15-34-22.5t-39-7.5q-20 0-39 7.5T267-489l-75 75-57-56 75-76q27-27 61-40.5t69-13.5q35 0 68.5 13.5T469-546l75 75q16 16 35 23.5t39 7.5q20 0 39.5-7.5T693-471l75-75 57 57-75 75Zm-1 200q-27 27-61 40.5T619-160q-35 0-69.5-13.5T488-214l-76-75q-15-15-34-22.5t-39-7.5q-20 0-39 7.5T266-289l-75 75-56-56 75-76q27-27 61-40.5t69-13.5q35 0 68.5 13.5T469-346l75 75q16 16 35.5 23.5T619-240q20 0 39-7.5t35-23.5l75-75 56 57-75 75Z"/>
+   </svg>
+	);
+};
+
+export const WifiIcon: React.FC<IconSvgProps> = (props) => {
+	const { width, height = 40 } = props;
+
+	return (
+		<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		height={height }
+		viewBox="0 -960 960 960" 
+		width={width} 
+		fill="#5f6368"
+		{...props}
+	>
+    <path d="M480-120q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM254-346l-84-86q59-59 138.5-93.5T480-560q92 0 171.5 35T790-430l-84 84q-44-44-102-69t-124-25q-66 0-124 25t-102 69ZM84-516 0-600q92-94 215-147t265-53q142 0 265 53t215 147l-84 84q-77-77-178.5-120.5T480-680q-116 0-217.5 43.5T84-516Z"/>
+    </svg>
+	);
+};
+
+export const CellularIcon: React.FC<IconSvgProps> = (props) => {
+	const { width, height = 40 } = props;
+
+	return (
+		<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		height={height }
+		viewBox="0 -960 960 960" 
+		width={width} 
+		fill="#5f6368"
+		{...props}
+	>
+    <path d="M480-120q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM254-346l-84-86q59-59 138.5-93.5T480-560q92 0 171.5 35T790-430l-84 84q-44-44-102-69t-124-25q-66 0-124 25t-102 69ZM84-516 0-600q92-94 215-147t265-53q142 0 265 53t215 147l-84 84q-77-77-178.5-120.5T480-680q-116 0-217.5 43.5T84-516Z"/>
+    </svg>
+	);
+};
