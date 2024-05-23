@@ -13,8 +13,9 @@ import {
   } from "@nextui-org/react";
   
   import { DashboardCardProps } from "@/types";
+import { FlowIcon, PressureIcon, TempIcon } from "./icons";
   
-  export const DashboardTempCard: React.FC<DashboardCardProps> = ({ icon, title, temperature, high, low, log }) => {
+  export const DashboardTempCard: React.FC<DashboardCardProps> = ({ title, temperature, high, low, log }) => {
     return (
       <Card
         isBlurred
@@ -24,7 +25,7 @@ import {
         <CardBody>
           <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
             <div className="relative col-span-6 md:col-span-4 shadow-lg rounded-3xl p-4 bg-background/60 dark:bg-default-100/50">
-              {icon}
+              <TempIcon height={60}/>
             </div>
             <div className="col-span-6 md:col-span-8">
               <div className="flex flex-col justify-between items-center">
@@ -43,7 +44,7 @@ import {
           </div>
         </CardBody>
         <CardFooter className="text-small justify-between flex-col">
-          <Accordion>
+          <Accordion isCompact>
             <AccordionItem key="1" aria-label="Accordion 1" subtitle="Ultimas entradas" title="Log">
               <Table aria-label="Example table" isCompact hideHeader>
                 <TableHeader>
@@ -67,7 +68,7 @@ import {
   };
 
 
-  export const DashboardPressureCard: React.FC<DashboardCardProps> = ({ icon, title, temperature, high, low, log }) => {
+  export const DashboardPressureCard: React.FC<DashboardCardProps> = ({ title, temperature, high, low, log }) => {
     return (
       <Card
         isBlurred
@@ -77,7 +78,7 @@ import {
         <CardBody>
           <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
             <div className="relative col-span-6 md:col-span-4 shadow-lg rounded-3xl p-4 bg-background/60 dark:bg-default-100/50">
-              {icon}
+              <PressureIcon height={60} />
             </div>
             <div className="col-span-6 md:col-span-8">
               <div className="flex flex-col justify-between items-center">
@@ -96,7 +97,7 @@ import {
           </div>
         </CardBody>
         <CardFooter className="text-small justify-between flex-col">
-          <Accordion>
+          <Accordion isCompact>
             <AccordionItem key="1" aria-label="Accordion 1" subtitle="Ultimas entradas" title="Log">
               <Table aria-label="Example table" isCompact hideHeader>
                 <TableHeader>
@@ -119,7 +120,7 @@ import {
     );
   };
 
-  export const DashboardFlowCard: React.FC<DashboardCardProps> = ({ icon, title, temperature, high, low, log }) => {
+  export const DashboardFlowCard: React.FC<DashboardCardProps> = ({ title, temperature, high, low, log }) => {
     return (
       <Card
         isBlurred
@@ -129,7 +130,7 @@ import {
         <CardBody>
           <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
             <div className="relative col-span-6 md:col-span-4 shadow-lg rounded-3xl p-4 bg-background/60 dark:bg-default-100/50">
-              {icon}
+              <FlowIcon height={60} />
             </div>
             <div className="col-span-6 md:col-span-8">
               <div className="flex flex-col justify-between items-center">
@@ -148,7 +149,7 @@ import {
           </div>
         </CardBody>
         <CardFooter className="text-small justify-between flex-col">
-          <Accordion>
+          <Accordion isCompact>
             <AccordionItem key="1" aria-label="Accordion 1" subtitle="Ultimas entradas" title="Log">
               <Table aria-label="Example table" isCompact hideHeader>
                 <TableHeader>

@@ -1,5 +1,4 @@
 import { SVGProps } from "react";
-import { ReactNode } from 'react';
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
@@ -7,7 +6,6 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 
 
 export interface DashboardCardProps {
-  icon: ReactNode;
   title: string;
   temperature: number;
   high: number;
