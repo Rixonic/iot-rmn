@@ -84,7 +84,7 @@ import {
                 <h3 className="font-bold text-foreground/90 text-xl">{title}</h3>
                 <div className="grid grid-cols-4 relative w-full items-end grid-col">
                   <h1 className="text-large font-medium mt-2 justify-self-center col-start-2 col-span-2">
-                    <span className="text-5xl">{temperature}</span>°C
+                    <span className="text-5xl">{temperature}</span>Kg/cm2
                   </h1>
                   <div className="col-span-1 justify-self-end">
                     <h1 className="text-large font-medium mt-2">H:{high}</h1>
@@ -136,10 +136,10 @@ import {
                 <h3 className="font-bold text-foreground/90 text-xl">{title}</h3>
                 <div className="grid grid-cols-4 relative w-full items-end grid-col">
                   <h1 className="text-large font-medium mt-2 justify-self-center col-start-2 col-span-2">
-                    <span className="text-5xl">{temperature}</span>°C
+                    <span className="text-5xl">{temperature}</span>Lts/hr
                   </h1>
                   <div className="col-span-1 justify-self-end">
-                    <h1 className="text-large font-medium mt-2">H:{high}</h1>
+                    
                     <h1 className="text-large font-medium mt-2">L:{low}</h1>
                   </div>
                 </div>
