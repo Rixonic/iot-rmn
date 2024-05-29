@@ -384,3 +384,39 @@ export const PressureIcon: React.FC<IconSvgProps> = (props) => {
     </svg>
 	);
 };
+
+export const LimitHighIcon: React.FC<IconSvgProps> = (props) => {
+	const { width, height = 40 } = props;
+
+	return (
+		<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		height={height }
+		viewBox="0 -960 960 960" 
+		width={width} 
+		fill="#5f6368"
+		{...props}
+	>
+    <path d="M160-760v-80h640v80H160Zm280 640v-408L336-424l-56-56 200-200 200 200-56 56-104-104v408h-80Z"/>
+    </svg>
+	);
+};
+
+
+
+export const LimitLowIcon: React.FC<IconSvgProps> = (props) => {
+	const { width, height = 40 } = props;
+
+	return (
+		<svg 
+		xmlns="http://www.w3.org/2000/svg" 
+		height={height }
+		viewBox="0 -960 960 960" 
+		width={width} 
+		fill="#5f6368"
+		{...props}
+	>
+   <path d="M160-120v-80h640v80H160Zm320-160L280-480l56-56 104 104v-408h80v408l104-104 56 56-200 200Z"/>
+    </svg>
+	);
+};
