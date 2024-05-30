@@ -1,12 +1,27 @@
 import { Card, CardBody, CardFooter, CardHeader, Chip, Divider, Radio, RadioGroup, Switch } from "@nextui-org/react";
 import { DashboardTempCard, DashboardFlowCard, DashboardPressureCard } from "./card";
-import { TempIcon, FlowIcon, PressureIcon } from "./icons";
-import { DoubleLineChart } from "./charts";
 
 const logData = [
     { date: '12/05/2024 12:55:03', message: 'Temperatura normal' },
     { date: '12/05/2024 \ 12:54:01', message: 'Fuera de temperatura' },
 ];
+
+const state = {
+    options: {
+      chart: {
+        id: "basic-bar"
+      },
+      xaxis: {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+      }
+    },
+    series: [
+      {
+        name: "series-1",
+        data: [30, 40, 45, 50, 49, 60, 70, 91]
+      }
+    ]
+  };
 
 const PerChiller: React.FC<{title: string}> = ({ title}) => {
     return (
@@ -140,14 +155,6 @@ export const WaterSideTab = () => {
                     <Switch color="danger"></Switch>
                 </CardBody>
             </Card>
-            <Card>
-                <CardHeader>
-                    <h1>Grafico</h1>
-                </CardHeader>
-                <CardBody>
-
-                </CardBody>
-            </Card>
 
         </div>
     );
@@ -169,8 +176,6 @@ export const RackTab = () => {
                     <div className="flex flex-row">
                         Marcha/Detenido
                     </div>
-
-                    <h1></h1>
                 </CardBody>
             </Card>
 
@@ -192,9 +197,9 @@ export const ConfigurationTab = () => {
         <div className="flex gap-3 flex-wrap">
 
             <Card>
-                <CardBody className="flex flex-row gap-4">
-                    <div className="flex flex-col gap-4">
-                        <h1>Planta de Chillers</h1>
+                <CardBody className="flex flex-row gap-10 pl-10 pr-10">
+                    <div className="flex flex-col gap-4 min-w-[200px]" >
+                        <h1 className="text-center">Planta de Chillers</h1>
                         <RadioGroup>
                             <Radio value="buenos-aires">Chiller Unico</Radio>
                             <Radio value="sydney">Principal + Backup</Radio>
@@ -204,7 +209,7 @@ export const ConfigurationTab = () => {
                     </div>
                     <Divider orientation="vertical" />
                     <div className="flex flex-col gap-4">
-                        <h1>Sistema</h1>
+                        <h1 className="text-center">Sistema</h1>
                         <RadioGroup>
                             <Radio value="buenos">Volumen <br />Refrigeracion Constante</Radio>
                             <Radio value="sydney">Volumen <br />Refrigeracion Variable</Radio>
@@ -212,8 +217,8 @@ export const ConfigurationTab = () => {
                         </RadioGroup>
                     </div>
                     <Divider orientation="vertical" />
-                    <div className="flex flex-col gap-4">
-                        <h1>Sistema de bombeo</h1>
+                    <div className="flex flex-col gap-4 min-w-[200px]">
+                        <h1 className="text-center">Sistema de bombeo</h1>
                         <RadioGroup
                             label="Circulacion Simple"
                         >
@@ -235,8 +240,13 @@ export const ConfigurationTab = () => {
                     </div>
                 </CardBody>
                 <Divider orientation="horizontal" />
-                <CardFooter className="justify-center">
+                <CardFooter className="justify-center flex-col">
                     <h2>Kit Hidronico</h2>
+                    <div className="flex flex-row gap-1">
+                        <h1>No</h1>
+                        <Switch/>
+                        <h1>Si</h1>
+                    </div>
                 </CardFooter>
             </Card>
 

@@ -24,7 +24,7 @@ export const DashboardTempCard: React.FC<DashboardCardProps> = ({ title, tempera
     >
       <CardBody className="pb-1">
         <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
-          <div className="relative col-span-6 md:col-span-4 shadow-md rounded-3xl p-4 bg-background/60 dark:bg-default-100/50">
+          <div className="relative col-span-6 md:col-span-4 shadow-md rounded-3xl p-4 bg-background/60 dark:bg-default-100/50 flex justify-center">
             <TempIcon height={60} />
           </div>
           <div className="col-span-6 md:col-span-8">
@@ -35,9 +35,9 @@ export const DashboardTempCard: React.FC<DashboardCardProps> = ({ title, tempera
                   <span className="text-5xl">{temperature}</span>°C
                 </h1>
                 <div className="col-span-1 justify-self-end">
-                  <div className="flex flex-row items-center"><LimitHighIcon height={24} /><h1 className="text-large font-medium mt-2">{high}</h1></div>
+                  <div className="flex flex-row items-center"><LimitHighIcon height={24} /><h1 className="text-large font-medium text-center">{high}</h1></div>
 
-                  <div className="flex flex-row items-center"><LimitLowIcon height={24} /><h1 className="text-large font-medium mt-2">{low}</h1></div>
+                  <div className="flex flex-row items-center"><LimitLowIcon height={24} /><h1 className="text-large font-medium text-center">{low}</h1></div>
 
                 </div>
               </div>
@@ -79,7 +79,7 @@ export const DashboardPressureCard: React.FC<DashboardCardProps> = ({ title, tem
     >
       <CardBody className="pb-0.5">
         <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
-          <div className="relative col-span-6 md:col-span-4 shadow-md rounded-3xl p-4 bg-background/60 dark:bg-default-100/50">
+          <div className="relative col-span-6 md:col-span-4 shadow-md rounded-3xl p-4 bg-background/60 dark:bg-default-100/50 flex justify-center">
             <PressureIcon height={60} />
           </div>
           <div className="col-span-6 md:col-span-8">
@@ -90,8 +90,10 @@ export const DashboardPressureCard: React.FC<DashboardCardProps> = ({ title, tem
                   <span className="text-5xl">{temperature}</span>Kg/cm2
                 </h1>
                 <div className="col-span-1 justify-self-end">
-                  <h1 className="text-large font-medium mt-2">H:{high}</h1>
-                  <h1 className="text-large font-medium mt-2">L:{low}</h1>
+                  <div className="flex flex-row items-center"><LimitHighIcon height={24} /><h1 className="text-large font-medium text-center">{high}</h1></div>
+
+                  <div className="flex flex-row items-center"><LimitLowIcon height={24} /><h1 className="text-large font-medium text-center">{low}</h1></div>
+
                 </div>
               </div>
             </div>
@@ -131,7 +133,7 @@ export const DashboardFlowCard: React.FC<DashboardCardProps> = ({ title, tempera
     >
       <CardBody className="pb-0.5">
         <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
-          <div className="relative col-span-6 md:col-span-4 shadow-md rounded-3xl p-4 bg-background/60 dark:bg-default-100/50">
+          <div className="relative col-span-6 md:col-span-4 shadow-md rounded-3xl p-4 bg-background/60  flex justify-center ">
             <FlowIcon height={60} />
           </div>
           <div className="col-span-6 md:col-span-8">
@@ -143,7 +145,7 @@ export const DashboardFlowCard: React.FC<DashboardCardProps> = ({ title, tempera
                 </h1>
                 <div className="col-span-1 justify-self-end h-full">
 
-                  <h1 className="text-large font-medium mt-2">L:{low}</h1>
+                <div className="flex flex-row items-center"><LimitLowIcon height={24} /><h1 className="text-large font-medium text-center">{low}</h1></div>
                 </div>
               </div>
             </div>
