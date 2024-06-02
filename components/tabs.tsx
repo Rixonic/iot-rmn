@@ -8,89 +8,88 @@ const logData = [
 
 const state = {
     options: {
-      chart: {
-        id: "basic-bar"
-      },
-      xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-      }
+        chart: {
+            id: "basic-bar"
+        },
+        xaxis: {
+            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+        }
     },
     series: [
-      {
-        name: "series-1",
-        data: [30, 40, 45, 50, 49, 60, 70, 91]
-      }
+        {
+            name: "series-1",
+            data: [30, 40, 45, 50, 49, 60, 70, 91]
+        }
     ]
-  };
+};
 
-const PerChiller: React.FC<{title: string}> = ({ title}) => {
+const PerChiller: React.FC<{ title: string }> = ({ title }) => {
     return (
         <div className="flex flex-col justify-start">
             <h1 className="tracking-tight inline font-semibold">{title}</h1>
-        <div className="flex flex-row gap-3">
-            <DashboardPressureCard
-                title='Presion de descarga'
-                temperature={10}
-                high={18}
-                low={8}
-                log={logData}
-            />
-            <DashboardPressureCard
-                title='Presion de succion'
-                temperature={10}
-                high={18}
-                low={8}
-                log={logData}
-            />
-            <Card>
-                <CardBody>
-                    <div className="flex flex-col gap-2">
-                        <h1>Fuerza Motriz</h1>
-                        <div className="flex flex-row gap-2">
-                            <Chip color="success">R</Chip><Chip color="success">S</Chip><Chip color="success">T</Chip>
+            <div className="flex flex-row gap-3">
+                <DashboardPressureCard
+                    title='Presion de descarga'
+                    temperature={10}
+                    high={18}
+                    low={8}
+                    log={logData}
+                />
+                <DashboardPressureCard
+                    title='Presion de succion'
+                    temperature={10}
+                    high={18}
+                    low={8}
+                    log={logData}
+                />
+                <Card>
+                    <CardBody>
+                        <div className="flex flex-col gap-2">
+                            <h1>Fuerza Motriz</h1>
+                            <div className="flex flex-row gap-2">
+                                <Chip color="success">R</Chip><Chip color="success">S</Chip><Chip color="success">T</Chip>
+                            </div>
+                            <Divider />
+                            <h1>Compresor</h1>
+                            <Chip color="success">Habilitado</Chip>
                         </div>
-                        <Divider />
-                        <h1>Compresor</h1>
-                        <Chip color="success">Habilitado</Chip>
-                        <h1></h1>
-                    </div>
-                </CardBody>
-            </Card>
+                    </CardBody>
+                </Card>
 
-            <Card>
-                <CardHeader className="justify-center">
-                    <h1>Sistema de bombeo</h1>
-                </CardHeader>
-                <CardBody>
-                    <div className="flex flex-row gap-4">
-                        <div className="flex flex-col">
-                            <h1>Primario</h1>
-                            <div className="flex flex-row">
-                                <div className="flex flex-col">
-                                    <h1>Bomba 1</h1> <Switch color="success"></Switch>
+                <Card>
+                    <CardHeader className="justify-center">
+                        <h1>Sistema de bombeo</h1>
+                    </CardHeader>
+                    <CardBody>
+                        <div className="flex flex-row gap-4">
+                            <div className="flex flex-col">
+                                <h1>Primario</h1>
+                                <div className="flex flex-row">
+                                    <div className="flex flex-col">
+                                        <h1>Bomba 1</h1> <Switch color="success"></Switch>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <h1>Bomba 2</h1> <Switch color="success"></Switch>
+                                    </div>
                                 </div>
-                                <div className="flex flex-col">
-                                    <h1>Bomba 2</h1> <Switch color="success"></Switch>
+                            </div>
+                            <Divider orientation="vertical" />
+                            <div className="flex flex-col">
+                                <h1>Secundario</h1>
+                                <div className="flex flex-row">
+                                    <div className="flex flex-col">
+                                        <h1>Bomba 1</h1> <Switch color="success"></Switch>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <h1>Bomba 2</h1> <Switch color="success"></Switch>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <Divider orientation="vertical"/>
-                        <div className="flex flex-col">
-                            <h1>Secundario</h1>
-                            <div className="flex flex-row">
-                                <div className="flex flex-col">
-                                    <h1>Bomba 1</h1> <Switch color="success"></Switch>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h1>Bomba 2</h1> <Switch color="success"></Switch>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </CardBody>
-            </Card>
+                    </CardBody>
+                </Card>
 
-        </div>
+            </div>
         </div>
     )
 }
@@ -111,7 +110,7 @@ const tempData = {
 
 export const WaterSideTab = () => {
     return (
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap justify-center">
             <DashboardTempCard
                 title='Temperatura - Entrada'
                 temperature={10}
@@ -186,8 +185,8 @@ export const RackTab = () => {
 export const ChillerPlantTab = () => {
     return (
         <div className="flex gap-3 flex-wrap">
-            <PerChiller title="Chiller 1"/>
-            <PerChiller title="Chiller 2"/>
+            <PerChiller title="Chiller 1" />
+            <PerChiller title="Chiller 2" />
         </div>
     );
 };
@@ -244,7 +243,7 @@ export const ConfigurationTab = () => {
                     <h2>Kit Hidronico</h2>
                     <div className="flex flex-row gap-1">
                         <h1>No</h1>
-                        <Switch/>
+                        <Switch />
                         <h1>Si</h1>
                     </div>
                 </CardFooter>
