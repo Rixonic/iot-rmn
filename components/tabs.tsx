@@ -1,5 +1,6 @@
 import { Card, CardBody, CardFooter, CardHeader, Chip, Divider, Radio, RadioGroup, Switch } from "@nextui-org/react";
 import { DashboardTempCard, DashboardFlowCard, DashboardPressureCard } from "./card";
+import { title, subtitle } from "@/components/primitives";
 
 const logData = [
     { date: '12/05/2024 12:55:03', message: 'Temperatura normal' },
@@ -23,11 +24,11 @@ const state = {
     ]
 };
 
-const PerChiller: React.FC<{ title: string }> = ({ title }) => {
+const PerChiller: React.FC<{ titleChiller: string }> = ({ titleChiller }) => {
     return (
-        <div className="flex flex-col justify-start">
-            <h1 className="tracking-tight inline font-semibold">{title}</h1>
-            <div className="flex flex-row gap-3">
+        <div className="flex flex-col justify-start md:justify-center gap-3">
+            <h1 className={title({size:"sm", alignText:"auto"})}>{titleChiller}</h1>
+            <div className="flex flex-row gap-3 flex-wrap justify-center">
                 <DashboardPressureCard
                     title='Presion de descarga'
                     temperature={10}
@@ -42,20 +43,6 @@ const PerChiller: React.FC<{ title: string }> = ({ title }) => {
                     low={8}
                     log={logData}
                 />
-                <Card>
-                    <CardBody>
-                        <div className="flex flex-col gap-2">
-                            <h1>Fuerza Motriz</h1>
-                            <div className="flex flex-row gap-2">
-                                <Chip color="success">R</Chip><Chip color="success">S</Chip><Chip color="success">T</Chip>
-                            </div>
-                            <Divider />
-                            <h1>Compresor</h1>
-                            <Chip color="success">Habilitado</Chip>
-                        </div>
-                    </CardBody>
-                </Card>
-
                 <Card>
                     <CardHeader className="justify-center">
                         <h1>Sistema de bombeo</h1>
@@ -88,7 +75,19 @@ const PerChiller: React.FC<{ title: string }> = ({ title }) => {
                         </div>
                     </CardBody>
                 </Card>
-
+                <Card>
+                    <CardBody>
+                        <div className="flex flex-col gap-2">
+                            <h1>Fuerza Motriz</h1>
+                            <div className="flex flex-row gap-2">
+                                <Chip color="success">R</Chip><Chip color="success">S</Chip><Chip color="success">T</Chip>
+                            </div>
+                            <Divider />
+                            <h1>Compresor</h1>
+                            <Chip color="success">Habilitado</Chip>
+                        </div>
+                    </CardBody>
+                </Card>
             </div>
         </div>
     )
@@ -146,11 +145,11 @@ export const WaterSideTab = () => {
                 low={14}
                 log={logData}
             />
-            <Card>
+            <Card className="order-first sm:order-last">
                 <CardHeader>
                     <h1>Modo Emergencia (Agua de red)</h1>
                 </CardHeader>
-                <CardBody>
+                <CardBody className="items-center">
                     <Switch color="danger"></Switch>
                 </CardBody>
             </Card>
@@ -161,7 +160,7 @@ export const WaterSideTab = () => {
 
 export const RackTab = () => {
     return (
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap justify-center">
             <DashboardTempCard
                 title='Temperatura de sala'
                 temperature={10}
@@ -170,11 +169,12 @@ export const RackTab = () => {
                 log={logData}
             />
             <Card>
-                <CardBody>
+                <CardHeader>
                     <h1>Estado de compresor de helio</h1>
-                    <div className="flex flex-row">
-                        Marcha/Detenido
-                    </div>
+                </CardHeader>
+                <CardBody className="flex flex-row justify-evenly pb-8">
+                    <Chip color="success">Marcha</Chip>
+                    <Chip color="default">Detenido</Chip>
                 </CardBody>
             </Card>
 
@@ -184,9 +184,9 @@ export const RackTab = () => {
 
 export const ChillerPlantTab = () => {
     return (
-        <div className="flex gap-3 flex-wrap">
-            <PerChiller title="Chiller 1" />
-            <PerChiller title="Chiller 2" />
+        <div className="flex gap-8 flex-wrap justify-center">
+            <PerChiller titleChiller="Chiller 1" />
+            <PerChiller titleChiller="Chiller 2" />
         </div>
     );
 };
@@ -196,7 +196,7 @@ export const ConfigurationTab = () => {
         <div className="flex gap-3 flex-wrap">
 
             <Card>
-                <CardBody className="flex flex-row gap-10 pl-10 pr-10">
+                <CardBody className="flex flex-row gap-4 md:gap-10 pl-10 pr-10 flex-wrap justify-center">
                     <div className="flex flex-col gap-4 min-w-[200px]" >
                         <h1 className="text-center">Planta de Chillers</h1>
                         <RadioGroup>
@@ -206,7 +206,8 @@ export const ConfigurationTab = () => {
                             <Radio value="sydy">2 Chillers</Radio>
                         </RadioGroup>
                     </div>
-                    <Divider orientation="vertical" />
+                    <Divider orientation="horizontal" className="md:hidden" />
+                    <Divider orientation="vertical" className="hidden md:block" />
                     <div className="flex flex-col gap-4">
                         <h1 className="text-center">Sistema</h1>
                         <RadioGroup>
@@ -215,7 +216,8 @@ export const ConfigurationTab = () => {
 
                         </RadioGroup>
                     </div>
-                    <Divider orientation="vertical" />
+                    <Divider orientation="horizontal" className="lg:hidden" />
+                    <Divider orientation="vertical" className="hidden lg:block" />
                     <div className="flex flex-col gap-4 min-w-[200px]">
                         <h1 className="text-center">Sistema de bombeo</h1>
                         <RadioGroup

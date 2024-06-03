@@ -17,14 +17,17 @@ export default function IndexPage() {
       <section className="flex flex-col items-center justify-center gap-4 py-4 md:py-2">
 
         <div className="inline-block max-w-lg text-center justify-center">
-          <h1 className={title()}>Cadena de frio - RMI GE Sigma&nbsp;</h1>
+          <h1 className={title({size:"md"})}>Cadena de frio - RMI GE Sigma&nbsp;</h1>
           <h1 className={title({ color: "violet" })}>&nbsp;</h1>
           <br />
           <h2 className={subtitle({ class: "mt-4" })}>
             Sanatorio Mater Dei
           </h2>
         </div>
-        <Tabs aria-label="Options">
+        <Tabs 
+          aria-label="Options"
+          classNames={{base:"max-w-full overflow-x-auto",}}
+        >
           <Tab key="WaterSideTab" title="Lado Agua">
             <WaterSideTab />
           </Tab>

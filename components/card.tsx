@@ -67,9 +67,9 @@ export const DashboardTempCard: React.FC<DashboardCardProps> = ({ title, tempera
             </Button>
           </DropdownTrigger>
           <DropdownMenu variant="faded" aria-label="Dropdown menu with description">
-            {log.map(l => (
+            {log.map((l, index)=> (
               <DropdownItem
-                key="new"
+                key={index}
                 //shortcut="⌘N"
                 description={"Fecha: "+l.date}
               //startContent={<AddNoteIcon className={iconClasses} />}
@@ -117,24 +117,34 @@ export const DashboardPressureCard: React.FC<DashboardCardProps> = ({ title, tem
         </div>
       </CardBody>
       <CardFooter className="text-small justify-between flex-col pt-0.5">
-        <Accordion isCompact>
-          <AccordionItem key="1" aria-label="Accordion 1" subtitle="Ultimas entradas" title="Log">
-            <Table aria-label="Example table" isCompact hideHeader>
-              <TableHeader>
-                <TableColumn>Fecha</TableColumn>
-                <TableColumn>Mensaje</TableColumn>
-              </TableHeader>
-              <TableBody>
-                {log.map((entry, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{entry.date}</TableCell>
-                    <TableCell>{entry.message}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </AccordionItem>
-        </Accordion>
+      <Dropdown>
+          <DropdownTrigger>
+            <Button
+            type="button"
+            variant="light"
+            size="sm"
+              className="flex w-full h-full gap-3 items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 py-2 transition-opacity"
+            >
+              <div className="flex-1 flex flex-col text-start">
+                <span className="text-foreground text-medium">Log</span>
+                <span className="text-foreground-500 font-normal text-small">Ultimas entradas</span>
+              </div>
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu variant="faded" aria-label="Dropdown menu with description">
+            {log.map((l, index)=> (
+              <DropdownItem
+                key={index}
+                //shortcut="⌘N"
+                description={"Fecha: "+l.date}
+              //startContent={<AddNoteIcon className={iconClasses} />}
+              >
+                {l.message}
+              </DropdownItem>
+            ))}
+
+          </DropdownMenu>
+        </Dropdown>
       </CardFooter>
     </Card>
   );
@@ -169,24 +179,34 @@ export const DashboardFlowCard: React.FC<DashboardCardProps> = ({ title, tempera
         </div>
       </CardBody>
       <CardFooter className="text-small justify-between flex-col pt-0.5">
-        <Accordion isCompact>
-          <AccordionItem key="1" aria-label="Accordion 1" subtitle="Ultimas entradas" title="Log">
-            <Table aria-label="Example table" isCompact hideHeader>
-              <TableHeader>
-                <TableColumn>Fecha</TableColumn>
-                <TableColumn>Mensaje</TableColumn>
-              </TableHeader>
-              <TableBody>
-                {log.map((entry, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{entry.date}</TableCell>
-                    <TableCell>{entry.message}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </AccordionItem>
-        </Accordion>
+      <Dropdown>
+          <DropdownTrigger>
+            <Button
+            type="button"
+            variant="light"
+            size="sm"
+              className="flex w-full h-full gap-3 items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 py-2 transition-opacity"
+            >
+              <div className="flex-1 flex flex-col text-start">
+                <span className="text-foreground text-medium">Log</span>
+                <span className="text-foreground-500 font-normal text-small">Ultimas entradas</span>
+              </div>
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu variant="faded" aria-label="Dropdown menu with description">
+            {log.map((l, index)=> (
+              <DropdownItem
+                key={index}
+                //shortcut="⌘N"
+                description={"Fecha: "+l.date}
+              //startContent={<AddNoteIcon className={iconClasses} />}
+              >
+                {l.message}
+              </DropdownItem>
+            ))}
+
+          </DropdownMenu>
+        </Dropdown>
       </CardFooter>
     </Card>
   );

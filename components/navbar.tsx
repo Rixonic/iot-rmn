@@ -51,10 +51,10 @@ export const Navbar = () => {
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <p className=" font-serif font-bold text-inherit">F4</p>
-            <p className=" hidden font-bold text-inherit">FRANK 4</p>
+      <NavbarBrand as="li" className="gap-3 max-w-fit">
+          <NextLink className="flex justify-start items-center gap-4" href="/">
+            <p className=" font-serif font-bold text-inherit">A.C.S.A.</p>
+            <p className=" sm:flex hidden font-bold text-inherit">Areas Controladas S.A.</p>
           </NextLink>
         </NavbarBrand>
         {/* 
@@ -118,13 +118,13 @@ export const Navbar = () => {
 
 
       <NavbarContent className=" basis-1 pl-4" justify="end">
-        <Link isExternal href={siteConfig.links.github} aria-label="Github">
+        
           <Image
             width={48}
             alt="NextUI hero Image"
             src="./logoInstitucion3.png"
           />
-        </Link>
+       
         <NavbarItem className="hidden sm:flex">Sanatorio Mater Dei</NavbarItem>
         <ThemeSwitch />
         {/* <NavbarMenuToggle /> */}

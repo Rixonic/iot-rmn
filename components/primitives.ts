@@ -13,12 +13,18 @@ export const title = tv({
       foreground: "dark:from-[#FFFFFF] dark:to-[#4B4B4B]",
     },
     size: {
-      sm: "text-3xl lg:text-4xl",
+      sm: "text-1xl lg:text-2xl",
       md: "text-[2.3rem] lg:text-5xl leading-9",
       lg: "text-4xl lg:text-6xl",
+      custom: "text-3xl lg:text-4xl",
     },
     fullWidth: {
       true: "w-full block",
+    },
+    alignText: {
+      left: "w-full block",
+      center: "text-center",
+      auto: " md:text-left text-center"
     },
   },
   defaultVariants: {
