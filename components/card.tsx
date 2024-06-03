@@ -1,6 +1,4 @@
 import {
-  Accordion,
-  AccordionItem,
   Button,
   Card,
   CardBody,
@@ -9,13 +7,6 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-  cn,
 } from "@nextui-org/react";
 
 import { DashboardCardProps } from "@/types";

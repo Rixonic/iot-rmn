@@ -1,6 +1,6 @@
 import { title, subtitle } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
-
+import { siteConfig } from "@/config/site";
 import {
   Tab,
   Tabs
@@ -8,20 +8,15 @@ import {
 import { ChillerPlantTab, ConfigurationTab, RackTab, WaterSideTab } from "@/components/tabs";
 
 export default function IndexPage() {
-  const logData = [
-    { date: '12/05/2024 12:55:03', message: 'Temperatura normal' },
-    { date: '12/05/2024 \ 12:54:01', message: 'Fuera de temperatura' },
-  ];
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-4 md:py-2">
 
         <div className="inline-block max-w-lg text-center justify-center">
-          <h1 className={title({size:"md"})}>Cadena de frio - RMI GE Sigma&nbsp;</h1>
-          <h1 className={title({ color: "violet" })}>&nbsp;</h1>
+          <h1 className={title({size:"md"})}> {siteConfig.title}</h1>
           <br />
           <h2 className={subtitle({ class: "mt-4" })}>
-            Sanatorio Mater Dei
+            {siteConfig.institution}
           </h2>
         </div>
         <Tabs 

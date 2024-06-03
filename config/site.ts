@@ -3,6 +3,8 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
 	name: "RMN - Tablero",
 	description: "asd",
+  institution:"Sanatorio Mater Dei",
+  title:"Cadena de frio - RMI GE Sigma",
   navItems: [
     {
       label: "Home",

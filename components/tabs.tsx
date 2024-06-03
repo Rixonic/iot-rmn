@@ -1,28 +1,11 @@
 import { Card, CardBody, CardFooter, CardHeader, Chip, Divider, Radio, RadioGroup, Switch } from "@nextui-org/react";
 import { DashboardTempCard, DashboardFlowCard, DashboardPressureCard } from "./card";
-import { title, subtitle } from "@/components/primitives";
+import { title } from "@/components/primitives";
 
 const logData = [
     { date: '12/05/2024 12:55:03', message: 'Temperatura normal' },
     { date: '12/05/2024 \ 12:54:01', message: 'Fuera de temperatura' },
 ];
-
-const state = {
-    options: {
-        chart: {
-            id: "basic-bar"
-        },
-        xaxis: {
-            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-        }
-    },
-    series: [
-        {
-            name: "series-1",
-            data: [30, 40, 45, 50, 49, 60, 70, 91]
-        }
-    ]
-};
 
 const PerChiller: React.FC<{ titleChiller: string }> = ({ titleChiller }) => {
     return (
@@ -93,19 +76,6 @@ const PerChiller: React.FC<{ titleChiller: string }> = ({ titleChiller }) => {
     )
 }
 
-const tempData = {
-    categories: ['10:00', '10:30', '11:00', '11:30', '12:00'],
-    series: [
-        {
-            name: 'Temperatura Entrada',
-            data: [10, 12, 15, 14, 13],
-        },
-        {
-            name: 'Temperatura Salida',
-            data: [8, 9, 11, 10, 9],
-        },
-    ],
-};
 
 export const WaterSideTab = () => {
     return (
