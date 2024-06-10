@@ -7,6 +7,7 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 
 export interface DashboardCardProps {
   title: string;
+  unit?: string;
   temperature: number;
   high: number;
   low: number;
