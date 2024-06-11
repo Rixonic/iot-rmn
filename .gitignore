@@ -35,8 +35,5 @@ yarn-error.log*
 next-env.d.ts
 
 /public/logoInstitucion.png
-/config/site.ts
 ./public/logoInstitucion.png
-./config/site.ts
 public/logoInstitucion.png
-config/site.ts
