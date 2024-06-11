@@ -17,61 +17,75 @@ import {
 import { title } from "@/components/primitives";
 import { useEffect, useState } from "react";
 import { DataProps } from "@/types";
+import useWebSocket from "@/hook/useWebSocket";
+import { SiteConfig, siteConfig } from "@/config/site";
 
 const logData = [
   { date: "12/05/2024 12:55:03", message: "Temperatura normal" },
   { date: "12/05/2024  12:54:01", message: "Fuera de temperatura" },
 ];
 
-const PerChiller: React.FC<{ titleChiller: string }> = ({ titleChiller }) => {
+const PerChiller: React.FC<{
+  name: string,
+  pressureIn: {
+      pressure: number,
+      max: number,
+      min: number
+  },
+  pressureOut: {
+      pressure: number,
+      max: number,
+      min: number
+  }
+}> = ({ name,  pressureIn, pressureOut }) => {
   return (
     <div className="flex flex-col justify-start md:justify-center gap-3">
       <h1 className={title({ size: "sm", alignText: "auto" })}>
-        {titleChiller}
+        {name}
       </h1>
       <div className="flex flex-row gap-3 flex-wrap justify-center">
         <DashboardPressureCard
           title="Presion de descarga"
-          temperature={162}
-          high={240}
-          low={78}
+          temperature={pressureIn.pressure}
+          high={pressureIn.max}
+          low={pressureIn.min}
           log={logData}
           unit=" PSI"
         />
         <DashboardPressureCard
           title="Presion de succion"
-          temperature={240}
-          high={240}
-          low={78}
+          temperature={pressureOut.pressure}
+          high={pressureOut.max}
+          low={pressureOut.min}
           log={logData}
           unit=" PSI"
         />
         <Card>
           <CardHeader className="justify-center">
-            <h1>Sistema de bombeo</h1>
+            <h1 className="font-bold">Sistema de bombeo</h1>
           </CardHeader>
           <CardBody>
             <div className="flex flex-row gap-4">
-              <div className="flex flex-col">
-                <h1>Primario</h1>
-                <div className="flex flex-row">
-                  <div className="flex flex-col">
-                    <h1>Bomba 1</h1> <Switch color="success"></Switch>
+              <div className="flex flex-col items-center">
+                <h1 className="">Primario</h1>
+                <div className="flex flex-row gap-2">
+                  <div className="flex flex-col items-center">
+                    <h1 className="text-center">Bomba 1</h1> <Switch color="success"></Switch>
                   </div>
-                  <div className="flex flex-col">
-                    <h1>Bomba 2</h1> <Switch color="success"></Switch>
+                  <div className="flex flex-col items-center">
+                    <h1 className="text-center">Bomba 2</h1> <Switch color="success"></Switch>
                   </div>
                 </div>
               </div>
               <Divider orientation="vertical" />
-              <div className="flex flex-col">
+              <div className="flex flex-col items-center">
                 <h1>Secundario</h1>
-                <div className="flex flex-row">
-                  <div className="flex flex-col">
-                    <h1>Bomba 1</h1> <Switch color="success"></Switch>
+                <div className="flex flex-row gap-2 ">
+                  <div className="flex flex-col items-center">
+                    <h1 className="text-center">Bomba 1</h1> <Switch color="success"></Switch>
                   </div>
-                  <div className="flex flex-col">
-                    <h1>Bomba 2</h1> <Switch color="success"></Switch>
+                  <div className="flex flex-col items-center">
+                    <h1 className="text-center">Bomba 2</h1> <Switch color="success"></Switch>
                   </div>
                 </div>
               </div>
@@ -80,15 +94,15 @@ const PerChiller: React.FC<{ titleChiller: string }> = ({ titleChiller }) => {
         </Card>
         <Card>
           <CardBody>
-            <div className="flex flex-col gap-2">
-              <h1>Fuerza Motriz</h1>
+            <div className="flex flex-col gap-2 justify-center items-center">
+              <h1 className="font-bold">Fuerza Motriz</h1>
               <div className="flex flex-row gap-2">
                 <Chip color="success">R</Chip>
                 <Chip color="success">S</Chip>
                 <Chip color="success">T</Chip>
               </div>
               <Divider />
-              <h1>Compresor</h1>
+              <h1 className="font-bold">Compresor</h1>
               <Chip color="success">Habilitado</Chip>
             </div>
           </CardBody>
@@ -101,33 +115,7 @@ const PerChiller: React.FC<{ titleChiller: string }> = ({ titleChiller }) => {
 export const WaterSideTab = () => {
   const [data, setData] = useState<DataProps>();
 
-  useEffect(() => {
-    let webSocket = new WebSocket("wss://node-red.frank4.com.ar/areascontroladas/materdei");
-
-    const connectWebSocket = () => {
-      webSocket = new WebSocket("wss://node-red.frank4.com.ar/areascontroladas/materdei");
-
-      webSocket.onopen = () => {
-        //console.log("WebSocket connection opened");
-      };
-
-      webSocket.onmessage = (event) => {
-        const receivedData = JSON.parse(event.data);
-        setData(receivedData);
-        console.log(receivedData)
-      };
-
-      webSocket.onclose = () => {
-        //console.log("WebSocket connection closed. Reconnecting...");
-        setTimeout(connectWebSocket, 3000); // Reconnect after 3 seconds
-      };
-    };
-    connectWebSocket();
-    // Cleanup WebSocket connection on component unmount
-    return () => {
-      webSocket.close();
-    };
-  }, []); // Empty dependency array ensures that this effect runs once on component mount
+  useWebSocket('wss://node-red.frank4.com.ar/areascontroladas/' + siteConfig.route, setData);
 
   return (
     <div className="flex gap-3 flex-wrap justify-center">
@@ -147,28 +135,27 @@ export const WaterSideTab = () => {
       />
       <DashboardFlowCard
         title="Flujo"
-        temperature={4324}
-        high={0}
-        low={2800}
+        temperature={data?.waterSide.flow.flow}
+        low={data?.waterSide.flow.min}
         log={logData}
       />
       <DashboardPressureCard
         title="Presion Retorno"
-        temperature={2.55}
-        high={12}
-        low={14}
+        temperature={data?.waterSide.pressureOut.pressure}
+        high={data?.waterSide.pressureOut.max}
+        low={data?.waterSide.pressureOut.min}
         log={logData}
       />
       <DashboardPressureCard
         title="Presion Entrada"
-        temperature={2.10}
-        high={12}
-        low={14}
+        temperature={data?.waterSide.pressureIn.pressure}
+        high={data?.waterSide.pressureIn.max}
+        low={data?.waterSide.pressureIn.min}
         log={logData}
       />
       <Card className="order-first sm:order-last">
         <CardHeader>
-          <h1>Modo Emergencia (Agua de red)</h1>
+          <h1 className="font-bold">Modo Emergencia (Agua de red)</h1>
         </CardHeader>
         <CardBody className="items-center">
           <Switch color="danger"></Switch>
@@ -179,18 +166,22 @@ export const WaterSideTab = () => {
 };
 
 export const RackTab = () => {
+  const [data, setData] = useState<DataProps>();
+
+  useWebSocket('wss://node-red.frank4.com.ar/areascontroladas/' + siteConfig.route, setData);
+
   return (
     <div className="flex gap-3 flex-wrap justify-center">
       <DashboardTempCard
         title="Temperatura de sala"
-        temperature={22.01}
-        high={24}
-        low={20}
+        temperature={data?.rack.tempRoom.temp}
+        high={data?.rack.tempRoom.max}
+        low={data?.rack.tempRoom.min}
         log={logData}
       />
       <Card>
         <CardHeader>
-          <h1>Estado de compresor de helio</h1>
+          <h1 className="font-bold">Estado de compresor de helio</h1>
         </CardHeader>
         <CardBody className="flex flex-row justify-evenly pb-8">
           <Chip color="success">Marcha</Chip>
@@ -202,10 +193,20 @@ export const RackTab = () => {
 };
 
 export const ChillerPlantTab = () => {
+  const [data, setData] = useState<DataProps>();
+
+  useWebSocket('wss://node-red.frank4.com.ar/areascontroladas/' + siteConfig.route, setData);
+
   return (
     <div className="flex gap-8 flex-wrap justify-center">
-      <PerChiller titleChiller="Chiller 1" />
-      <PerChiller titleChiller="Chiller 2" />
+      {data?.chillers.map((chiller, index) => (
+        <PerChiller
+          key={index}
+          name={chiller.name}
+          pressureIn={chiller.pressureIn}
+          pressureOut={chiller.pressureOut}
+        />
+      ))}
     </div>
   );
 };

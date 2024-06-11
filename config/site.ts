@@ -5,6 +5,7 @@ export const siteConfig = {
 	description: "asd",
   institution:"Sanatorio Mater Dei",
   title:"Cadena de frio - RMI GE Sigma",
+  route: "materdei",
   navItems: [
     {
       label: "Home",
