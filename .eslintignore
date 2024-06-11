@@ -18,5 +18,3 @@ build
 !plopfile.js
 !react-shim.js
 !tsup.config.ts
-public/logoInstitucion.png
-config/site.ts
