@@ -15,6 +15,8 @@ import {
   DashboardPressureCard,
 } from "./card";
 import { title } from "@/components/primitives";
+import { useEffect, useState } from "react";
+import { DataProps } from "@/types";
 
 const logData = [
   { date: "12/05/2024 12:55:03", message: "Temperatura normal" },
@@ -97,20 +99,50 @@ const PerChiller: React.FC<{ titleChiller: string }> = ({ titleChiller }) => {
 };
 
 export const WaterSideTab = () => {
+  const [data, setData] = useState<DataProps>();
+
+  useEffect(() => {
+    let webSocket = new WebSocket("wss://node-red.frank4.com.ar/areascontroladas/materdei");
+
+    const connectWebSocket = () => {
+      webSocket = new WebSocket("wss://node-red.frank4.com.ar/areascontroladas/materdei");
+
+      webSocket.onopen = () => {
+        //console.log("WebSocket connection opened");
+      };
+
+      webSocket.onmessage = (event) => {
+        const receivedData = JSON.parse(event.data);
+        setData(receivedData);
+        console.log(receivedData)
+      };
+
+      webSocket.onclose = () => {
+        //console.log("WebSocket connection closed. Reconnecting...");
+        setTimeout(connectWebSocket, 3000); // Reconnect after 3 seconds
+      };
+    };
+    connectWebSocket();
+    // Cleanup WebSocket connection on component unmount
+    return () => {
+      webSocket.close();
+    };
+  }, []); // Empty dependency array ensures that this effect runs once on component mount
+
   return (
     <div className="flex gap-3 flex-wrap justify-center">
       <DashboardTempCard
         title="Temperatura - Entrada"
-        temperature={10.01}
-        high={18}
-        low={8}
+        temperature={ data?.waterSide.tempIn.temp}
+        high={data?.waterSide.tempIn.max}
+        low={data?.waterSide.tempIn.min}
         log={logData}
       />
       <DashboardTempCard
         title="Temperatura - Salida"
-        temperature={14.01}
-        high={23.5}
-        low={13.5}
+        temperature={ data?.waterSide.tempOut.temp}
+        high={data?.waterSide.tempOut.max}
+        low={data?.waterSide.tempOut.min}
         log={logData}
       />
       <DashboardFlowCard

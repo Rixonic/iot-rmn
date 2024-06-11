@@ -41,19 +41,19 @@ export const DashboardTempCard: React.FC<DashboardCardProps> = ({
               <h3 className="font-bold text-foreground/90 text-xl">{title}</h3>
               <div className="grid grid-cols-4 relative w-full items-end grid-col">
                 <h1 className="text-large font-medium mt-2 justify-self-center col-span-3 place-self-center">
-                  <span className="text-5xl">{temperature}</span>{unit}
+                  <span className="text-5xl">{temperature?temperature:"--"}</span>{unit}
                 </h1>
                 <div className="col-span-1 justify-self-end">
                   <div className="flex flex-row items-center">
                     <LimitHighIcon height={24} />
                     <h1 className="text-large font-medium text-center">
-                      {high}
+                      {high?high:"--"}
                     </h1>
                   </div>
                   <div className="flex flex-row items-center">
                     <LimitLowIcon height={24} />
                     <h1 className="text-large font-medium text-center">
-                      {low}
+                      {low?low:"--"}
                     </h1>
                   </div>
                 </div>
@@ -124,19 +124,19 @@ export const DashboardPressureCard: React.FC<DashboardCardProps> = ({
               <h3 className="font-bold text-foreground/90 text-xl">{title}</h3>
               <div className="grid grid-cols-4 relative w-full items-end grid-col">
                 <h1 className="text-large font-medium mt-2 justify-self-center col-span-3 place-self-center">
-                  <span className="text-5xl">{temperature}</span>{unit}
+                  <span className="text-5xl">{temperature? (temperature):"--"}</span>{unit}
                 </h1>
                 <div className="col-span-1 justify-self-end">
                   <div className="flex flex-row items-center">
                     <LimitHighIcon height={24} />
                     <h1 className="text-large font-medium text-center">
-                      {high}
+                      {high ? high : "--"}
                     </h1>
                   </div>
                   <div className="flex flex-row items-center">
                     <LimitLowIcon height={24} />
                     <h1 className="text-large font-medium text-center">
-                      {low}
+                      {low? low:"--"}
                     </h1>
                   </div>
                 </div>
@@ -207,13 +207,13 @@ export const DashboardFlowCard: React.FC<DashboardCardProps> = ({
               <h3 className="font-bold text-foreground/90 text-xl">{title}</h3>
               <div className="grid grid-cols-4 relative w-full items-end grid-col">
                 <h1 className="text-large font-medium mt-2 justify-self-center col-span-3 place-self-center">
-                  <span className="text-5xl">{temperature}</span>{unit}
+                  <span className="text-5xl">{temperature? temperature:"--"}</span>{unit}
                 </h1>
                 <div className="col-span-1 justify-self-end h-full">
                   <div className="flex flex-row items-center">
                     <LimitLowIcon height={24} />
                     <h1 className="text-large font-medium text-center">
-                      {low}
+                      {low?low:"--"}
                     </h1>
                   </div>
                 </div>
